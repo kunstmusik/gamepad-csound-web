@@ -1,3 +1,11 @@
+# GamePad API + Csound
+
+This is a proof-of-concept web application that uses input from the GamePad API together with WebAudio Csound 
+to create an interactive instrument.  The site is currently hardcoded for use with an Xbox One controller.
+
+To use: button presses turn on notes and releases turn off notes. Analog input is used to control filter cutoff, pitch bend, and vibrato frequency and amplitude.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

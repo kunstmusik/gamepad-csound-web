@@ -1296,6 +1296,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@kunstmusik/csound@^6.15.0":
+  version "6.15.0"
+  resolved "https://registry.yarnpkg.com/@kunstmusik/csound/-/csound-6.15.0.tgz#b6ebbf4d9b601e15745a58328d76791df9fe985d"
+  integrity sha512-ZfRCbu3BXL/23d0hJV59sjuImqC/wlQ9U3SopoWyff6QzYZUr2r1N73MQMHmKD3M+CNtl8VK1+nM/poJornBFA==
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"

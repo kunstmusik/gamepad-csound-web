@@ -45,7 +45,7 @@ const pollGamepads = () => {
     const gp = gamePads[0];
 
     for(let i = 0; i < gp.buttons.length; i++) {
-      if(gp.buttons[i].pressed != buttons[i]) {
+      if(gp.buttons[i].pressed !== buttons[i]) {
         buttons[i] =  gp.buttons[i].pressed;
 
         if(buttons[i]) {

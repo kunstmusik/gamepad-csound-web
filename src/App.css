@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+a {
+  color: orange;
+}
+
+a:visited {
+  color: orange;
+}
+

@@ -104,6 +104,7 @@ to create an interactive instrument.  The site is currently hardcoded for use wi
           : <button onClick={startApp}>Start App</button>
         }
         </div>
+        <p><a href="https://github.com/kunstmusik/gamepad-csound-web">View Source</a></p>
       </header>
       :
       <header className="App-header">Loading...</header>

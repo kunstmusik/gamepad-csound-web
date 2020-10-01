@@ -14,25 +14,27 @@ function App() {
 
 
 const pollGamepads = () => {
-  const gamePads = navigator.getGamepads();
+  const gamePads = navigator.getGamepads ? navigator.getGamepads() : (navigator.webkitGetGamepads ? navigator.webkitGetGamepads : []);
 
   if(gamePads.length > 0) {
     const gp = gamePads[0];
 
-    for(let i = 0; i < gp.buttons.length; i++) {
-      if(gp.buttons[i].pressed !== buttons[i]) {
-        buttons[i] =  gp.buttons[i].pressed;
+    if(gp) {
+      for(let i = 0; i < gp.buttons.length; i++) {
+        if(gp.buttons[i].pressed !== buttons[i]) {
+          buttons[i] =  gp.buttons[i].pressed;
 
-        if(buttons[i]) {
-           csound.evaluateCode(`schedule(1.${i}, 0, -2, cpsmidinn(48 + 2 * ${i}), ampdbfs(-12))`)
-        } else {
-           csound.evaluateCode(`schedule(-1.${i}, 0, 2, cpsmidinn(48 + 2 * ${i}), ampdbfs(-12))`)
+          if(buttons[i]) {
+             csound.evaluateCode(`schedule(1.${i}, 0, -2, cpsmidinn(48 + 2 * ${i}), ampdbfs(-12))`)
+          } else {
+             csound.evaluateCode(`schedule(-1.${i}, 0, 2, cpsmidinn(48 + 2 * ${i}), ampdbfs(-12))`)
+          }
         }
       }
-    }
 
-    for(let i = 0; i < gp.axes.length; i++) {
-      csound.setControlChannel(`axis${i}`, gp.axes[i]);
+      for(let i = 0; i < gp.axes.length; i++) {
+        csound.setControlChannel(`axis${i}`, gp.axes[i]);
+      }
     }
 
   }

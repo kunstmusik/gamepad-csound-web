@@ -19,8 +19,8 @@ const orc = `
     asig = vco2(1, kfreq) 
     asig += vco2(0.25, kfreq * 1.5) 
 
-    kcut = port(chnget:k("axis0"), 0.05) * 4000 + 4100
-    asig = zdf_ladder(asig, kcut, 0.5) 
+    kcut = port(chnget:k("axis0"), 0.05) * 2 + 11.5 
+    asig = zdf_ladder(asig, cpsoct(kcut), 0.5) 
 
     asig *= expsegr(0.001, .05, 0.1, 2, 0.001)
 

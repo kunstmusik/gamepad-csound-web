@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './App.css';
-import CsoundObj from "@kunstmusik/csound";
+import { Csound } from "@csound/browser";
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import orc from "!!raw-loader!./instrument.orc";
 
@@ -25,9 +25,9 @@ const pollGamepads = () => {
           buttons[i] =  gp.buttons[i].pressed;
 
           if(buttons[i]) {
-             csound.evaluateCode(`schedule(1.${i}, 0, -2, cpsmidinn(48 + 2 * ${i}), ampdbfs(-12))`)
+             csound.evalCode(`schedule(1.${i}, 0, -2, cpsmidinn(48 + 2 * ${i}), ampdbfs(-12))`)
           } else {
-             csound.evaluateCode(`schedule(-1.${i}, 0, 2, cpsmidinn(48 + 2 * ${i}), ampdbfs(-12))`)
+             csound.evalCode(`schedule(-1.${i}, 0, 2, cpsmidinn(48 + 2 * ${i}), ampdbfs(-12))`)
           }
         }
       }
@@ -45,8 +45,7 @@ const pollGamepads = () => {
 
     useEffect(() => {
         if (csound == null) {
-            CsoundObj.initialize().then(() => {
-                const cs = new CsoundObj();
+            Csound().then((cs) => {
                 setCsound(cs);
             });
         }
@@ -56,7 +55,7 @@ const pollGamepads = () => {
     csound.setOption("-+msg_color=false");
     csound.compileOrc(orc);
     csound.start();
-    csound.audioContext.resume();
+    csound.getAudioContext().then(ac => ac.resume());
     setStarted(true);
 
     requestAnimationFrame(pollGamepads);
